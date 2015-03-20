@@ -1,18 +1,11 @@
 package fr.lhous.tp3.exo3;
 
-import fr.lhous.tp2.Equipage;
-
-
-public class Capitaine extends MarinTp3 {
+public class Capitaine extends Marin {
 	private Grade grade;
-	
-	public enum Grade{
-		COMMANDANT, CAPITAINE, AMIRAL;
-	}
 
-	public Capitaine(String nom, int salaire, Grade m) {
-		super(nom, salaire);
-		this.grade = m;
+	public Capitaine(String nom, String prenom, int salaire, String grade) {
+		super(nom, prenom, salaire);
+		this.grade = Grade.valueOf(grade);
 	}
 
 	@Override

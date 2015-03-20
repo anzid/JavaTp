@@ -1,15 +1,19 @@
 package fr.lhous.tp2;
 
 import java.util.Arrays;
-import fr.lhous.tp1.Marin;
+//import fr.lhous.tp1.Marin;//importer la classe Marin
+import fr.lhous.tp3.exo3.*;
 
 public class Equipage {
 	public Marin[] marins;
 
+	public Equipage(){
+	}
+
 	public Equipage(int taille){
 		marins = new Marin[taille];
 	}
-
+	
 	//ajouter un marin
 	public boolean addMarin(Marin nouveauMarin){
 		if(this.isMarinPresent(nouveauMarin) == true){

@@ -1,5 +1,7 @@
 package fr.lhous.tp2;
-import fr.lhous.tp1.Marin;
+//import fr.lhous.tp1.Marin;
+import fr.lhous.tp3.exo3.Capitaine;
+import fr.lhous.tp3.exo3.Marin;
 
 public class TestEquipage {
 	public static void main(String[] args)
@@ -40,6 +42,7 @@ public class TestEquipage {
 		equipage1.addAllEquipage(equipage2);
 		System.out.println("equipage1" + equipage1);
 		System.out.println("equipage1 etendu "  + equipage1.etendEquipage(2));
+		
 		//test du hashCode
 		Equipage equipage10 = new Equipage(5);
 		equipage1.addMarin(new Marin("aaa","bbb"));
@@ -55,6 +58,13 @@ public class TestEquipage {
 		System.out.println(equipage11.hashCode()); //resultat = 1
 		System.out.println(equipage1.hashCode());  //resultat = -895842099
 		System.out.println(equipage2.hashCode());  //resultat = 112550221
-
+		
+		// test ajout d'un capitaine dans un equipage
+		Equipage equipage20 = new Equipage(5);
+		Capitaine capitaine = new Capitaine("aaa","bbb",1000,"COMMANDANT");
+		System.out.println(equipage20.addMarin(new Marin("aaa","bbb")));
+		System.out.println(equipage20.addMarin(new Marin("ccc","bbb")));
+		//ici j'avais une erreur difficle à dibuger :capitain etend Marin de tp3 et j'importe un marin dans un autre package
+		System.out.println(equipage20.addMarin(capitaine));
 	}
 }

@@ -29,24 +29,26 @@ public class Sauvegarde {
 		}
 	}
 	
-	public static Marin[] lisFichierTexte(String nomFichier){
-		Marin[] marins;
-		FileReader fr= new FileReader("marin.txt");
+	public static Marin[] lisFichierTexte(String nomFichier) throws IOException{
+		int i =0;
+		Marin[] marins = new Marin[50];
+		FileReader fr= new FileReader("marins");
+		@SuppressWarnings("resource")
 		LineNumberReader lnr = new LineNumberReader(fr);
 		String line = null;
-		while(line != null){
-			int number =lnr.getLineNumber();
+		do {
 			line = lnr.readLine();
 			if(lnr != null){
 				String nom = line.substring(0, line.indexOf("|", 0));
-				String prenom = line.substring(line.indexOf("|",0),line.indexOf("|", line.indexOf("|",0))+1);
-				String prennom = line.su
-
+				String prenom = line.substring(line.indexOf("|",0)+1,line.indexOf("|", line.indexOf("|",0)+1));
+				String salaire = line.substring(line.indexOf("|", line.indexOf("|",0)+1)+1);
+				marins[i] = new Marin(nom, prenom, Integer.parseInt(salaire)); 
+				System.out.println(marins[i]);
+				i++;
 			}
-			
 		}
-		
-		
+		while(line != null);
+		return marins;
 	}
 	
 	public static void sauveFichierBinaire(String nomFichier, Marin marin) throws UnsupportedEncodingException{

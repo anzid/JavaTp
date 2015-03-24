@@ -1,6 +1,9 @@
 package fr.lhous.tp3.exo3;
 
-public class Marin {
+import java.io.Serializable;
+
+public class Marin implements Serializable{
+	private static final long serialVersionUID = -5531868057984991743L;
 	//instance de la class Marin
 	private String nom;
 	private String prenom;

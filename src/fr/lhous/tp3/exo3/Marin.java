@@ -2,13 +2,17 @@ package fr.lhous.tp3.exo3;
 
 import java.io.Serializable;
 
-public class Marin implements Serializable{
+public class Marin implements Serializable{	//enregestrer les marins dans un fichier binaire
 	private static final long serialVersionUID = -5531868057984991743L;
 	//instance de la class Marin
 	private String nom;
 	private String prenom;
 	private int salaire;
-
+	
+	//constructeur vide
+	public Marin(){
+		
+	}
 	/*constructeur*/
 	public  Marin(String nom, String prenom, int salaire ){
 		this.nom = nom;

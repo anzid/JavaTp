@@ -1,14 +1,18 @@
 package fr.lhous.tp3.exo5;
 import fr.lhous.tp3.exo4.EquipageCommande;
 
-public abstract class Bateau {//on rend la class abstrait pour pouvoir appeler la methode getTypeBateau de la sous class
+public abstract class Bateau {//on rend la class abstrait pour pouvoir appeler la methode getTypeBateau de la class concrete
 	private String nom;
 	private int tonnage;
 	private EquipageCommande equipageComande;
-	public abstract String getTypeBateau();
-	
+	public abstract String getTypeBateau();	//methode definie dans la classe concrete
 
+	//constructeur vide
+	public Bateau(){
+		
+	}
 	
+	//constructeur
 	public Bateau(String nom, int tonnage, EquipageCommande equipageCommande){
 		this.nom = nom;
 		this.tonnage = tonnage;
@@ -55,14 +59,12 @@ public abstract class Bateau {//on rend la class abstrait pour pouvoir appeler l
 			return false;
 		return true;
 	}
-	
 
+	//methode toString qui renvoie aussi type du bateau
 	@Override
 	public String toString() {
 		return "Bateau [nom=" + nom + ", tonnage=" + tonnage
 				+ ", equipageComande=" + equipageComande + ", getTypeBateau()="
 				+ getTypeBateau() + "]";
 	}
-
-	
 }

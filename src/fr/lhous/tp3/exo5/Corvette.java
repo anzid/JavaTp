@@ -11,6 +11,5 @@ public class Corvette extends Bateau{
 	
 	public String getTypeBateau(){
 		return TypeBateau.Corvette.toString();
-		
 	}
 }

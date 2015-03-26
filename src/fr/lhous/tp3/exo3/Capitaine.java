@@ -3,8 +3,12 @@ package fr.lhous.tp3.exo3;
 public class Capitaine extends Marin {
 	private Grade grade;
 
+	//constructeur vide avce appel implicite du constructeur de la superclass
+	public Capitaine(){
+	}
+	//constructeur
 	public Capitaine(String nom, String prenom, int salaire, String grade) {
-		super(nom, prenom, salaire);
+		super(nom, prenom, salaire);	//appel explicite au constructeur de la superclass
 		this.grade = Grade.valueOf(grade);
 	}
 
@@ -36,4 +40,3 @@ public class Capitaine extends Marin {
 		return true;
 	}
 }
-

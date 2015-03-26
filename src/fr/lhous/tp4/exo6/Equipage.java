@@ -12,7 +12,7 @@ public class Equipage {
 
 	public Equipage(){
 	}
-	
+	 
 	//ajouter un marin
 	public boolean addMarin(Marin nouveauMarin){
 		if(this.marins.contains(nouveauMarin) == true){

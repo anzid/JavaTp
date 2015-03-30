@@ -1,4 +1,4 @@
-package fr.lhous.tp6.exo11;
+package fr.lhous.tp5a.exo11;
 
 public class Palindrome {
 	

@@ -9,7 +9,7 @@ import fr.lhous.tp4.exo7.Marin;
 public class TestMarinComparator {
 
 	public static void main(String[] args) {
-		SortedSet<Marin> marins = new TreeSet<Marin>(new MarinComparator<Marin>);
+		SortedSet<Marin> marins = new TreeSet<Marin>(new MarinComparator());
 		Marin marin1 = new Marin("aaa", "bbb",1000);
 		Marin marin2 = new Marin("ccc", "ddd",2000);
 		Marin marin3 = new Marin("eee", "fff",3000);
@@ -19,5 +19,6 @@ public class TestMarinComparator {
 		MarinComparator marinComparator = new MarinComparator();
 		//Comparator<Marin> marinComparator = new MarinComparator();
 		System.out.println(marinComparator.compare(marin1, marin2));
+		System.out.println(marinComparator.compare(marin3, marin3));
 	}
 }

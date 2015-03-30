@@ -8,8 +8,12 @@ public class MarinComparator implements Comparator<Marin>  {
 	}
 
 	@Override
-	public int compare(Marin o1, Marin o2) {
-		return 0;
+	public int compare(Marin m1, Marin m2) {
+		if(m1.getNom().equals(m2.getNom())){
+			return m1.getNom().compareTo(m2.getNom());
+		}
+		else{
+			return m1.getPrenom().compareTo(m2.getPrenom());
+		}
 	}
-
 }

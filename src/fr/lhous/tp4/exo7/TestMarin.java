@@ -17,9 +17,6 @@ public class TestMarin {
 		System.out.println(marin1.hashCode());
 		System.out.println(marin2.hashCode());
 		System.out.println(marin3.hashCode());
-		/*quand on surcharge equals et hashcode, le marins2 ne s'ajoute pas dans la liste parce qu'elle accepte pas les doublants
-		 * 
-		 */
-		
+		/*quand on surcharge equals et hashcode, le marins2 ne s'ajoute pas dans la liste parce qu'elle accepte pas les doublants*/
 	}
 }

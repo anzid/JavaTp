@@ -1,6 +1,5 @@
 package fr.lhous.tp4.exo8;
 
-import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 

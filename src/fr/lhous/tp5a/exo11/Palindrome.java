@@ -15,7 +15,7 @@ public class Palindrome {
 		}
 	
 	// test de produit de deux nombres à 3 chiffres
-		public boolean isProduit (int nbre){
+		private boolean isProduit (int nbre){
 			for (int i=100; i<=999; i++){
 				if(nbre%i==0){ // test de la divisibilité
 					if(nbre/i>99 && nbre/i<=999){
@@ -29,7 +29,7 @@ public class Palindrome {
 		}
 
 		// test si un nombre est palindrome
-		public boolean isPalindrome (int nbre){
+		private boolean isPalindrome (int nbre){
 			String s=Integer.toString(nbre);	//convertir un int en String on utilisant la class wrapper Integer
 			for(int i=0; i<s.length()/2; i++){
 				if(s.charAt(i) != s.charAt(s.length()-i-1)){	// test de l'egalite de deux caractere avec symbole = (char est un type primitif)

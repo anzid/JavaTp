@@ -12,15 +12,15 @@ public class Equipage {
 
 	public Equipage(){
 	}
-	 
-	//ajouter un marin
+
+	//ajouter un marin parceuqe List autorise les doublants
 	public boolean addMarin(Marin nouveauMarin){
 		if(this.marins.contains(nouveauMarin) == true){
 			return false;
 		}
 		else{
-				this.marins.add(nouveauMarin);
-					return true;
+			this.marins.add(nouveauMarin);
+			return true;
 		}
 	}
 

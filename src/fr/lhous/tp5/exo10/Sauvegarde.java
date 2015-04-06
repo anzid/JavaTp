@@ -18,25 +18,31 @@ import java.util.List;
 import fr.lhous.tp3.exo3.Marin;
 
 public class Sauvegarde {
+
+	//constructeur vide
 	public Sauvegarde(){
 	};
 
 	public static void sauveFichierTexte(String nomFichier, Marin marin){
+		// définition d'un fichier
 		File fichier = new File(nomFichier);
 		Writer write =null;
 		try{
+			// ouverture d'un flux de sortie sur un fichier
 			write = new FileWriter(fichier, true);
 			String buffer = marin.getNom()+"|"+marin.getPrenom()+"|"+marin.getSalaire()+"\n";
 			write.write(buffer);
 		}	catch (IOException e) {
 			e.printStackTrace();
-		} finally{
+		} 	finally{
+
 			if(write != null){
+
 				try{
 					write.close();
-				} catch(IOException e){
-					e.printStackTrace();
 
+				} 	catch(IOException e){
+					e.printStackTrace();
 				}
 			}
 		}
@@ -46,7 +52,6 @@ public class Sauvegarde {
 		int i =0;
 		Marin[] marins = new Marin[50];
 		FileReader fr= new FileReader("marins");
-		@SuppressWarnings("resource")
 		LineNumberReader lnr = new LineNumberReader(fr);
 		String line = null;
 		do {
@@ -60,15 +65,17 @@ public class Sauvegarde {
 				i++;
 			}
 		}
-		while(line != null);
+		while(line != null);	
 		return marins;
 	}
 
 	public static void sauveFichierBinaire(String nomFichier, Marin marin){
+		DataOutputStream dos = null;
 		try{
 			File file = new File(nomFichier);
 			FileOutputStream fos = new FileOutputStream(file,true);
-			DataOutputStream dos = new  DataOutputStream(fos);
+			dos = new  DataOutputStream(fos);
+			//ecriture avec le codege UTF
 			dos.writeUTF(marin.getNom());
 			dos.writeUTF(marin.getPrenom());
 			dos.writeUTF(String.valueOf(marin.getSalaire()));
@@ -78,6 +85,12 @@ public class Sauvegarde {
 			e.printStackTrace();
 		}
 		finally{
+			try{
+				dos.close();
+
+			} 	catch(IOException e){
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -96,50 +109,46 @@ public class Sauvegarde {
 		return marins;
 	}
 
-	/*	public static void sauveObjet(String nomFichier, Marin marin){
+	public static void sauveObjet(String nomFichier, List<Marin> marin){
 		File fichier = new File("marins.txt");
+		ObjectOutputStream oos = null;		
 		try {
-			@SuppressWarnings("resource")
-			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichier));
+			oos = new ObjectOutputStream(new FileOutputStream(fichier));
 			oos.writeObject(marin);
-			oos.close();
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}*/
+		finally{
+			try{
+				oos.close();
 
-	public static void sauveObjet(String nomFichier, List<Marin> marin){
-		File fichier = new File("marins.txt");
-		try {
-			@SuppressWarnings("resource")
-			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichier));
-			oos.writeObject(marin);
-
-			/*for(Marin i:marin){
-				oos.writeObject(i);
-			}*/
-			oos.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			} 	catch(IOException e){
+				e.printStackTrace();
+			}
 		}
 	}
 
 	public static List<Marin> lisObjet(String nomFichier) throws FileNotFoundException, IOException, ClassNotFoundException{
-		//List<Marin> marins = new ArrayList<Marin> ();
 		File fichier = new File("marins.txt");
-		FileInputStream is = new FileInputStream(fichier);
-		ObjectInputStream ois = new ObjectInputStream(is);
-		List<Marin> l = (List<Marin>) ois.readObject();
-		/*while(is.available()>0)
-		{
-			Marin m =(Marin) ois.readObject();
-			marins.add(m);
-		}*/
-		ois.close();
-		return l;
+		ObjectInputStream ois = null;
+		try{
+			FileInputStream is = new FileInputStream(fichier);
+			ois = new ObjectInputStream(is);
+			List<Marin> l = (List<Marin>) ois.readObject();
+		}	catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try{
+				ois.close();
+
+			} 	catch(IOException e){
+				e.printStackTrace();
+			}
+		}
 	}
+	return l;
 }

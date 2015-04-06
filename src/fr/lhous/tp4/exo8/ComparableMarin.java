@@ -4,10 +4,11 @@ import fr.lhous.tp4.exo7.Marin;
 
 public class ComparableMarin implements Comparable<Marin>{
 	private String nom,prenom;
-	
+
+	//constructeur vide
 	ComparableMarin(){
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -26,15 +27,11 @@ public class ComparableMarin implements Comparable<Marin>{
 
 	@Override
 	public int compareTo(Marin m) {
-		if(this.getNom().equals(m.getNom())){
-			return this.getNom().compareTo(m.getNom());
+		if(this.getNom().equals(m.getNom())){ //les noms sont egaux on compare les prenoms
+			return this.getPrenom().compareTo(m.getPrenom());
 		}
 		else{
-			return this.getPrenom().compareTo(m.getPrenom());
+			return this.getNom().compareTo(m.getNom());
 		}
 	}
 }
-
-	
-
-

@@ -6,8 +6,7 @@ public class Marin {
 	private String prenom;
 	private int salaire;
 
-
-	
+	//constructeur vide
 	public Marin(){
 	}
 
@@ -21,13 +20,11 @@ public class Marin {
 	/*deuxieme constructeur*/
 	public Marin (String nom, int salaire){
 		this(nom, "", salaire);
-
 	}
 
 	/*deuxieme constructeur*/
 	public Marin (String nom, String prenom){
 		this(nom, prenom, 0);
-
 	}
 
 	/*renvoie le nom du Marin*/
@@ -53,7 +50,6 @@ public class Marin {
 	/*augumenter salaire*/
 	public void augumenteSalaire(int augumenteSalaire){
 		this.salaire = this.salaire + augumenteSalaire;
-
 	}
 
 	/*afficher les champs de Marin*/
@@ -96,4 +92,3 @@ public class Marin {
 		return true;
 	}
 }  
-

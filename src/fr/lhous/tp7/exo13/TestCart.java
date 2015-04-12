@@ -20,5 +20,4 @@ public class TestCart {
 		System.out.println(panier);
 		System.out.println(panier.getPrice());
 	}
-
 }

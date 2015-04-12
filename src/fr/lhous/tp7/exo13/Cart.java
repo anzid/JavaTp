@@ -5,33 +5,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
-	//private List<Movie> movies= new ArrayList<Movie>();
+	//interface map pour utiliser les couple clé valeur
 	private Map <Movie, Integer> movies = new HashMap<Movie, Integer>();
 
+	//constructeur vide
 	public Cart(){
 	}
 
+	//ajouter un film dans le paner
 	public void addMovie(Movie movie, int nbreJours){
-		if(this.movies.containsKey(movie)){
-			movies.put(movie, movies.get(movie)+ nbreJours);
+		if(this.movies.containsKey(movie)){	//verifier si l'article existe deja dans le panier
+			movies.put(movie, movies.get(movie)+ nbreJours);	//on ecrase l'article present par le meme article avec nbreJours met à jour
 		}
 		else{
-			movies.put(movie, nbreJours);
+			movies.put(movie, nbreJours); //on ajoute l'article
 		}
 	}
 
+	//retirer un article dans le panier
 	public void removeMovie(Movie movie){
 		this.movies.remove(movie);
 	}
 
+	//retourne le prix total d'un panier
 	public double getPrice(){
 		double totalPrice = 0;
-		Collection<Movie> movies = this.movies.keySet();
-		for(Movie m : movies){
+		Collection<Movie> movies = this.movies.keySet();	//liste des articles
+		for(Movie m : movies){	//parcour tout les articles
+			//
 			totalPrice = Double.sum(totalPrice, Double.valueOf(m.getPrice(this.movies.get(m))));
 		}
 		return totalPrice;
 	}
+	
+	//retourne les points de fidelite d'un panier
 	public double getFidelityPoints(){
 		double fedilityPoints = 0;
 		Collection<Movie> movies = this.movies.keySet();

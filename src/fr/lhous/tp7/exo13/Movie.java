@@ -11,6 +11,7 @@ public class Movie {
 		this.priceCode = priceCode;
 	}
 	
+	//retourne le prix d'un article, on peut le faire avec swich case
 	public double getPrice(int nbreJours){
 		double price = 0;
 		if(this.priceCode == PriceCode.NORMAL){

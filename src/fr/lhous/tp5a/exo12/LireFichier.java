@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
-import java.util.regex.Pattern;
 
 public class LireFichier {
 
@@ -17,8 +16,9 @@ public class LireFichier {
 	public LireFichier(){
 
 	}
-
-	public SortedSet<String> LisFichierTexte() {
+	//lit le fichier texte et retourne une liste des noms
+	public static SortedSet<String> LisFichierTexte() {
+		//une liste avec tri
 		SortedSet<String> names = new TreeSet<String>();
 		FileReader fr = null;
 		try{
@@ -26,25 +26,22 @@ public class LireFichier {
 			LineNumberReader lnr = new LineNumberReader(fr);
 			String line = null;
 			do{
-				line = lnr.readLine();
+				line = lnr.readLine();//lecture d'une ligne
 				if(line != null){
-					System.out.println(line);
-					StringTokenizer st = new StringTokenizer(line,"\",\"");
-					while(st.hasMoreTokens()){
-						names.add(st.nextToken());
+					StringTokenizer st = new StringTokenizer(line,"\",\"");//definir la separation entre les mots
+					while(st.hasMoreTokens()){//tant que y'a d'autre mots a lire
+						names.add(st.nextToken());//ajouter le mot suivant dans la liste
 					}
 				}
-			}while(line != null);
-			System.out.println(names);
-
+			}while(line != null);//detecter la fin de la lecture
 
 		}	catch (FileNotFoundException e) { 
 
-			// gestion de l'erreur
+			System.out.println("Erreur " + e.getMessage()) ;
 
 		}  catch (IOException e) {
 
-			// gestion de l'erreur
+			System.out.println("Erreur " + e.getMessage()) ;
 
 		}  finally {
 
@@ -57,36 +54,35 @@ public class LireFichier {
 
 				}  catch (IOException e) {
 
-					// gestion de l'erreur
+					System.out.println("Erreur " + e.getMessage()) ;
 				}
 			}
 		}
 		return names;
-
 	}
 
 	//retourne le score d'un nom
 	public static int scoreName(String name){
 		int score = 0;
-		for(int i=0; i < name.length(); i++){
+		for(int i=0; i < name.length(); i++){	//parcourir les lettres d'un nom
 			//on convertit les lettre an ascii et on translate les valeurs en ascii vers les scores
 			score = score + (int) name.charAt(i) - 64;
 		}
 		return score;
 	}
 
-	public static int scoreNames(SortedSet<String> names){
-		List <Integer> scores = new ArrayList<>();
+	//prend en argument la liste des noms recuperé est retourne le score totale du fichier
+	public static int totalScore(SortedSet<String> names){
+		List <Integer> scores = new ArrayList<>();	//liste qui contiendra les scores de chaque nom
 		int position = 1;
 		int totalScore = 0;
-		for(String n : names){
-			scores.add( scoreName(n));
-			System.out.println(position * scoreName(n));
+		for(String n : names){	//parcourir tout les noms
+			scores.add( scoreName(n));	//ajouter le score dans la list des scores
 		}
-		for(Integer i : scores){
-			totalScore = totalScore + position * i;
+		for(Integer i : scores){	//parcourir la liste des scores
+			totalScore = totalScore + position * i;	//multiplier chaque score par son index correspaondant
+			position++;
 		}
-		return totalScore;
+		return totalScore;	//resultat : 871198282
 	}
-
 }
